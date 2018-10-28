@@ -1,0 +1,6 @@
+[package]
+name = "Rustic"
+version = "0.1.0"
+authors = ["Siddharth Kulkarni <sidcool1234@gmail.com>"]
+
+[dependencies]
