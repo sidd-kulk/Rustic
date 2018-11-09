@@ -5,9 +5,7 @@ fn main(){
     println!("Starting...");
     let mut numbers = Vec::new();
     for arg in std::env::args().skip(1) {
-
-        numbers.push(usize::from_str(&arg)
-            .expect("error parsing argument"));
+        numbers.push(arg.parse::<usize>().unwrap());
     }
 
     if numbers.len() != 2 {
