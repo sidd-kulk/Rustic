@@ -2,19 +2,22 @@ use std::str::FromStr;
 use std::io::Write;
 
 fn main(){
-    println!("Starting...");
     let mut numbers = Vec::new();
     for arg in std::env::args().skip(1) {
         numbers.push(arg.parse::<usize>().unwrap());
     }
 
-    if numbers.len() != 2 {
-        writeln!(std::io::stderr(), "Usage: gcd NUMBER <number 1> <number 2>").unwrap();
+    if numbers.len() == 0 {
+        writeln!(std::io::stderr(), "pass parameters to function call <number 1> <number 2> ... ").unwrap();
         std::process::exit(1);
     }
 
+    let mut final_result = numbers[0];
+    for n in &numbers[1..] {
+        final_result = gcd(final_result, *n);
+    }
 
-    println!("GCD of passed numbers is {}", gcd(numbers[0], numbers[1]));
+    println!("GCD of {:?} is {}", numbers, final_result);
 }
 
 fn gcd(n: usize, m: usize) -> usize {
